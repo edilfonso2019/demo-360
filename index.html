@@ -2,257 +2,115 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Plano 360 Interactivo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano 360 Profesional</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html,body{
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  background:#000;
-  font-family:Arial, sans-serif;
-}
+    body{
+        margin:0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:#f4f4f4;
+    }
 
-/* IFRAME */
-.container{
-  position:fixed;
-  inset:0;
-  width:100vw;
-  height:100vh;
-}
-iframe{
-  width:100%;
-  height:100%;
-  border:none;
-}
+    header{
+        background:#111;
+        padding:15px;
+        text-align:center;
+    }
 
-/* LOADER */
-#loader{
-  position:fixed;
-  inset:0;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  font-size:16px;
-  z-index:9999;
-}
+    header img{
+        height:60px;
+    }
 
-/* ===== WIDGET ===== */
-.chat-widget{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  z-index:9999;
-  font-family:Arial, sans-serif;
-}
+    .hero{
+        padding:60px 20px;
+        text-align:center;
+        background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+        color:white;
+    }
 
-/* BOTÓN CON TEXTO */
-.chat-trigger{
-  display:flex;
-  align-items:center;
-  background:#25D366;
-  color:white;
-  padding:12px 18px;
-  border-radius:50px;
-  cursor:pointer;
-  box-shadow:0 8px 25px rgba(0,0,0,0.3);
-  transition:0.3s ease;
-  gap:10px;
-}
+    .hero h1{
+        font-size:40px;
+        margin-bottom:20px;
+    }
 
-.chat-trigger:hover{
-  transform:scale(1.05);
-}
+    .hero p{
+        font-size:18px;
+        max-width:600px;
+        margin:auto;
+        opacity:0.9;
+    }
 
-.chat-trigger span{
-  font-weight:bold;
-  font-size:14px;
-}
+    /* BOTÓN WHATSAPP */
+    .whatsapp-container{
+        position:fixed;
+        bottom:25px;
+        right:25px;
+        display:flex;
+        align-items:center;
+        z-index:999;
+    }
 
-/* BURBUJA LOGO */
-.chat-icon{
-  width:40px;
-  height:40px;
-  background:#25D366;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+    .whatsapp-text{
+        background:white;
+        color:#111;
+        padding:10px 15px;
+        border-radius:30px;
+        margin-right:10px;
+        font-size:14px;
+        font-weight:bold;
+        box-shadow:0 5px 15px rgba(0,0,0,0.2);
+        white-space:nowrap;
+    }
 
-/* Ventana */
-.chat-box{
-  width:340px;
-  background:white;
-  border-radius:16px;
-  box-shadow:0 20px 50px rgba(0,0,0,0.35);
-  display:none;
-  flex-direction:column;
-  margin-bottom:15px;
-  overflow:hidden;
-  animation:fadeIn 0.3s ease;
-}
+    .whatsapp-button{
+        width:60px;
+        height:60px;
+        border-radius:50%;
+        background:#25D366;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        box-shadow:0 5px 15px rgba(0,0,0,0.3);
+        transition:0.3s;
+        text-decoration:none;
+    }
 
-.chat-header{
-  background:#25D366;
-  color:white;
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+    .whatsapp-button:hover{
+        transform:scale(1.1);
+    }
 
-.chat-user{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
+    .whatsapp-button img{
+        width:30px;
+    }
 
-.chat-avatar{
-  width:45px;
-  height:45px;
-  background:url('logo_ecorio.png') center/cover;
-  border-radius:50%;
-}
-
-.status{
-  font-size:12px;
-  opacity:0.9;
-}
-
-.chat-body{
-  padding:15px;
-  background:#f5f5f5;
-  font-size:14px;
-}
-
-.chat-message{
-  background:white;
-  padding:12px;
-  border-radius:10px;
-}
-
-.chat-footer{
-  display:flex;
-  border-top:1px solid #ddd;
-}
-
-.chat-footer input{
-  flex:1;
-  border:none;
-  padding:12px;
-  outline:none;
-}
-
-.chat-footer button{
-  background:#25D366;
-  border:none;
-  color:white;
-  padding:0 18px;
-  cursor:pointer;
-  font-size:16px;
-}
-
-.close-btn{
-  cursor:pointer;
-}
-
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(10px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-/* RESPONSIVE */
-@media(max-width:480px){
-  .chat-box{
-    width:95vw;
-  }
-}
 </style>
 </head>
 
 <body>
 
-<!-- Loader -->
-<div id="loader">
-  Cargando recorrido 360...
+<header>
+    <img src="logo_ecorio.png" alt="Logo Asesor">
+</header>
+
+<section class="hero">
+    <h1>Impulsa tus Ventas con Plano 360°</h1>
+    <p>
+        Presenta tus terrenos de forma profesional con recorridos interactivos en 360°.
+        Facilita la decisión de compra y destaca frente a la competencia.
+        Tecnología inmobiliaria que vende.
+    </p>
+</section>
+
+<!-- BOTÓN WHATSAPP -->
+<div class="whatsapp-container">
+    <div class="whatsapp-text">Quiero mi Plano 360°</div>
+    <a class="whatsapp-button" 
+       href="https://wa.me/51925076753?text=Hola,%20quiero%20información%20sobre%20mi%20Plano%20360°"
+       target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
 </div>
-
-<!-- Iframe -->
-<div class="container">
-  <iframe 
-    src="https://storage.net-fs.com/hosting/8461514/5/"
-    allow="fullscreen; accelerometer; gyroscope; magnetometer"
-    allowfullscreen>
-  </iframe>
-</div>
-
-<!-- Widget WhatsApp -->
-<div class="chat-widget">
-
-  <!-- Ventana -->
-  <div class="chat-box" id="chatBox">
-    <div class="chat-header">
-      <div class="chat-user">
-        <div class="chat-avatar"></div>
-        <div>
-          <strong>Asesor Plano 360</strong><br>
-          <small class="status">● En línea</small>
-        </div>
-      </div>
-      <span class="close-btn" onclick="toggleChat()">✕</span>
-    </div>
-
-    <div class="chat-body">
-      <div class="chat-message">
-        👋 Hola, somos especialistas en <strong>Planos 360 Interactivos</strong> para proyectos inmobiliarios.<br><br>
-        ¿Te gustaría implementar uno en tu proyecto?
-      </div>
-    </div>
-
-    <div class="chat-footer">
-      <input type="text" id="chatInput" placeholder="Quiero mi plano 360 para mi proyecto...">
-      <button onclick="sendMessage()">➤</button>
-    </div>
-  </div>
-
-  <!-- Botón con texto -->
-  <div class="chat-trigger" onclick="toggleChat()">
-    <div class="chat-icon">
-      <svg viewBox="0 0 32 32" width="22" height="22">
-        <path fill="white"
-          d="M16 .396C7.163.396 0 7.559 0 16.396c0 2.89.757 5.61 2.08 7.98L.1 32l7.82-2.052A15.94 15.94 0 0016 32c8.837 0 16-7.163 16-16S24.837.396 16 .396z"/>
-      </svg>
-    </div>
-    <span>Quiero mi plano 360</span>
-  </div>
-
-</div>
-
-<script>
-const phone="51925076753";
-
-function toggleChat(){
-  const box=document.getElementById("chatBox");
-  box.style.display=box.style.display==="flex"?"none":"flex";
-}
-
-function sendMessage(){
-  const input=document.getElementById("chatInput");
-  const message=input.value||"Hola, quiero información sobre el Plano 360 Interactivo para mi proyecto.";
-  const url=`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-  window.open(url,"_blank");
-}
-
-const iframe=document.querySelector("iframe");
-iframe.onload=()=>{
-  document.getElementById("loader").style.display="none";
-};
-</script>
 
 </body>
 </html>
